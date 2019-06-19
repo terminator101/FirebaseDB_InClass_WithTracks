@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FirebaseDB_InClass</string>
+
+    <array name="genres">
+        <item name="rock">Rock</item>
+        <item name="pop">Pop</item>
+        <item name="metal">Metal</item>
+        <item name="jazz">Jazz</item>
+        <item name="classical">Classical</item>
+    </array>
+
+</resources>
