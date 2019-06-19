@@ -1,10 +1,13 @@
 package com.example.firebasedb_inclass;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -51,8 +54,51 @@ public class MainActivity extends AppCompatActivity {
         buttonAddArtist = findViewById(R.id.buttonAddToDatabase);
 
         listViewArtists = findViewById(R.id.listViewArtists);
-
         artists = new ArrayList<>();
+
+                listViewArtists.setOnTouchListener(new ListView.OnTouchListener(){
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                int action = event.getAction();
+                switch (action) {
+                    case MotionEvent.ACTION_DOWN:
+                        // Disallow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
+                        // Allow ScrollView to intercept touch events.
+                        v.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+
+                // Handle ListView touch events.
+                v.onTouchEvent(event);
+                return true;
+            }
+        });
+
+                listViewArtists.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        //getting the selected artists
+                        Artist a = artists.get(position);
+
+                        //creating and intent
+                        Intent i = new Intent(getApplicationContext(), ArtistActivity.class);
+
+                        //putting artist name and id to intent
+                        i.putExtra("ARTIST_ID", a.getArtistId());
+                        i.putExtra("ARTIST_NAME", a.getArtistName());
+
+                        //starting the activity with intent
+                        startActivity(i);
+                    }
+                });
+
+
+
 
     }
 
