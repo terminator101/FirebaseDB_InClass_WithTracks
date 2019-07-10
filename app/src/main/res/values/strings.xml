@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">FirebaseDB_InClass</string>
+    <string name="emailHint">Enter Email</string>
+    <string name="passwordHint">Enter Password</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="registerButtonText">Register Now</string>
+    <string name="loginButtonText">Login</string>
+    <string name="registerInsteadButtonText">Don\'t have account? Register now!</string>
 
     <array name="genres">
         <item name="rock">Rock</item>

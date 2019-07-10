@@ -21,7 +21,7 @@
 
     <Spinner
         android:id="@+id/spinnerGenre"
-        android:layout_width="395dp"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:entries="@array/genres"
